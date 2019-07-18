@@ -1,0 +1,75 @@
+
+Player_D.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Dead_
+  rotate: false
+  xy: 1, 1
+  size: 121, 125
+  orig: 121, 125
+  offset: 0, 0
+  index: 0
+Dead_
+  rotate: false
+  xy: 124, 1
+  size: 121, 125
+  orig: 121, 125
+  offset: 0, 0
+  index: 1
+Dead_
+  rotate: false
+  xy: 247, 1
+  size: 121, 125
+  orig: 121, 125
+  offset: 0, 0
+  index: 2
+Dead_
+  rotate: false
+  xy: 370, 1
+  size: 121, 125
+  orig: 121, 125
+  offset: 0, 0
+  index: 3
+Dead_
+  rotate: false
+  xy: 493, 1
+  size: 121, 125
+  orig: 121, 125
+  offset: 0, 0
+  index: 4
+Dead_
+  rotate: false
+  xy: 616, 1
+  size: 121, 125
+  orig: 121, 125
+  offset: 0, 0
+  index: 5
+Dead_
+  rotate: false
+  xy: 739, 1
+  size: 121, 125
+  orig: 121, 125
+  offset: 0, 0
+  index: 6
+Dead_
+  rotate: false
+  xy: 739, 1
+  size: 121, 125
+  orig: 121, 125
+  offset: 0, 0
+  index: 7
+Dead_
+  rotate: false
+  xy: 739, 1
+  size: 121, 125
+  orig: 121, 125
+  offset: 0, 0
+  index: 8
+Dead_
+  rotate: false
+  xy: 739, 1
+  size: 121, 125
+  orig: 121, 125
+  offset: 0, 0
+  index: 9

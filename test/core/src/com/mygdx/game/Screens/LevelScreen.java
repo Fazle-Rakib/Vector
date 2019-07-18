@@ -26,7 +26,7 @@ public class LevelScreen implements Screen {
         sound = Gdx.audio.newSound(Gdx.files.internal("Sound//menu.mp3"));
         bs = Gdx.audio.newSound(Gdx.files.internal("Sound//button.mp3"));
         es = Gdx.audio.newSound(Gdx.files.internal("Sound//enter.mp3"));
-        sound.loop();
+        //sound.loop();
 
         back = new Texture("Menu//back.png");
         p1 = new Texture("Menu//lev1.png");

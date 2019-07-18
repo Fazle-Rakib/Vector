@@ -41,7 +41,7 @@ public class MenuScreen implements Screen {
         sound = Gdx.audio.newSound(Gdx.files.internal("Sound//menu.mp3"));
         bs = Gdx.audio.newSound(Gdx.files.internal("Sound//button.mp3"));
         es = Gdx.audio.newSound(Gdx.files.internal("Sound//enter.mp3"));
-        sound.loop();
+        //sound.loop();
 
         background = new Texture("Menu//Background.png");
         button = new Sprite(new Texture("Menu//s1.png"));
