@@ -4,26 +4,27 @@ import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.g2d.*;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.viewport.*;
 import com.mygdx.game.MyGdxGame;
 import com.badlogic.gdx.ApplicationAdapter;
+
+import java.awt.*;
 
 public class PlayScreen implements Screen{
     private MyGdxGame game;
     private Texture skyTex,roadTex,backTex,exTex,h1Tex,h3Tex,
             objBarrol,objTire,objBlock1,objBlock2,objPad1,objPad2
-            ,objStone1,enemy0;
+            ,objStone1;
     private TextureAtlas Enemy_1_A_Atlas;
     private Animation AnimE_1_A,AnimE_1_R;
     private float elapsedTime = 0;
-
+    Sprite test1,test2;
+    private Rectangle rec1,rec2;
     private OrthographicCamera camera;
     private Viewport viewport;
-    int sourceX = 0;
+    int  sourceX = 0;
     float cx,cy;
 
     //private Viewport gameport;
@@ -39,8 +40,10 @@ public class PlayScreen implements Screen{
         exTex = new Texture("Bright//ex1.png");
         roadTex = new Texture("Bright//road&lamps.png");
 
-        objBarrol = new Texture("Object//Barrel_1.png");
-        objTire = new Texture("Object//3Tire.png");
+        //objBarrol = new Texture("Object//Barrel1.png");
+        test1 = new Sprite(new Texture("Object//Barrel_1.png"));
+        //objTire = new Texture("Object//3Tire.png");
+        test2 = new Sprite(new Texture("Object//3Tire.png"));
         objBlock1 = new Texture("Object//Block.png");
         objBlock2 = new Texture("Object//Block03.png");
         objPad1 = new Texture("Object//Pad01.png");
@@ -80,6 +83,18 @@ public class PlayScreen implements Screen{
 
         game.batch.begin();
         sourceX += 1;
+
+        rec1 = test1.getBoundingRectangle();
+        rec2 = test2.getBoundingRectangle();
+        boolean isover = rec1.overlaps(rec2);
+        if(isover)
+        {
+            System.out.println("Overlapping");
+        }
+        else
+        {
+            System.out.println("Not");
+        }
         cx = camera.position.x = elapsedTime += Gdx.graphics.getDeltaTime()*100;
         game.batch.draw(skyTex,0,0,sourceX ,0,850,500);
         game.batch.draw(h3Tex,0,0,(int)(sourceX*1.5),0,850,500);
@@ -88,19 +103,23 @@ public class PlayScreen implements Screen{
         game.batch.draw(exTex,0,0,sourceX*2,0,850,500);
         game.batch.draw(roadTex,0,0,(int)(sourceX*2.2),0,850,500);
 
-        game.batch.draw((TextureRegion) AnimE_1_A.getKeyFrame(elapsedTime,true ),0,25);
-        game.batch.draw((TextureRegion) AnimE_1_R.getKeyFrame(elapsedTime,true ),0,10);
+        //game.batch.draw((TextureRegion) AnimE_1_A.getKeyFrame(elapsedTime,true ),0,25);
+        //game.batch.draw((TextureRegion) AnimE_1_R.getKeyFrame(elapsedTime,true ),0,10);
 
+        test1.setPosition(sourceX,25);
+        test1.draw(game.batch);
 
-        game.batch.draw(objBarrol,(int)((cx - 500)*-1.5),25);
-        game.batch.draw(objTire,(int)((cx-1000)*-1.5),-10);
+        //game.batch.draw(test2,(int)((cx-1000)*-1.5),-10);
+        test2.setPosition(750,25);
+        test2.draw(game.batch);
+
         game.batch.draw(objBlock1,(int)((cx-1600)*-1.5),25);
         game.batch.draw(objPad1,(int)((cx-2100)*-1.5),25);
         game.batch.draw(objPad2,(int)((cx-2600)*-1.5),20);
-        game.batch.draw(objBarrol,(int)((cx - 3050)*-1.5),25);
-        game.batch.draw(objPad2,(int)((cx-3350)*-1.5),20);
-        game.batch.draw(objBlock2,(int)((cx-3700)*-1.5),25);
-        game.batch.draw(objStone1,(int)((cx-3950)*-1.5),25);
+        //game.batch.draw(objBarrol,(int)((cx - 3050)*-1.5),25);
+        game.batch.draw(objPad2,(int)((cx-3400)*-1.5),20);
+        game.batch.draw(objBlock2,(int)((cx-3750)*-1.5),25);
+        game.batch.draw(objStone1,(int)((cx-4000)*-1.5),25);
 
         game.batch.end();
     }

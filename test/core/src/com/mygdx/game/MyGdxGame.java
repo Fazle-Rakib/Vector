@@ -8,6 +8,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.mygdx.game.Screens.MenuScreen;
+import com.mygdx.game.Screens.Play2ndScreen;
 import com.mygdx.game.Screens.PlayScreen;
 
 public class MyGdxGame extends Game {
@@ -16,7 +18,9 @@ public class MyGdxGame extends Game {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		setScreen(new PlayScreen(this));
+		//setScreen(new PlayScreen(this));
+		//setScreen(new Play2ndScreen(this));
+		setScreen(new MenuScreen(this));
 	}
 
 	@Override
