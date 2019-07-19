@@ -13,6 +13,7 @@ public class LevelScreen implements Screen {
     private MyGdxGame game;
     private PlayScreen play1;
     private Play2ndScreen play2;
+    private MenuScreen menuScreen;
     private SpriteBatch batch;
     private Texture back,p1,p2;
     Sound sound,bs,es;
@@ -26,7 +27,7 @@ public class LevelScreen implements Screen {
         sound = Gdx.audio.newSound(Gdx.files.internal("Sound//menu.mp3"));
         bs = Gdx.audio.newSound(Gdx.files.internal("Sound//button.mp3"));
         es = Gdx.audio.newSound(Gdx.files.internal("Sound//enter.mp3"));
-        //sound.loop();
+        sound.loop();
 
         back = new Texture("Menu//back.png");
         p1 = new Texture("Menu//lev1.png");
@@ -56,10 +57,12 @@ public class LevelScreen implements Screen {
             es.play(2.0f);
             if (pos1 == 1) {
                 play1 = new PlayScreen(game);
+                sound.pause();
                 game.setScreen(play1);
             }
             if (pos1 == 2) {
                 play2 = new Play2ndScreen(game);
+                sound.pause();
                 game.setScreen(play2);
             }
         }
@@ -80,6 +83,12 @@ public class LevelScreen implements Screen {
             {
                 pos1 = 1;
             }
+        }
+        if(Gdx.input.isKeyJustPressed(Input.Keys.ESCAPE))
+        {
+            sound.pause();
+            menuScreen = new MenuScreen(game);
+            game.setScreen(menuScreen);
         }
         if(pos1 == 1)
         {
