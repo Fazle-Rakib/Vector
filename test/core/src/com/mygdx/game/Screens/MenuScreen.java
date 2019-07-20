@@ -20,18 +20,18 @@ public class MenuScreen implements Screen {
     private MyGdxGame game;
     private OrthographicCamera camera;
     private Viewport gameport;
-    private Texture background,front,layer1,layer2;
+    private Texture background,front,layer1,layer2,tex1;
     Sprite button;
     private PlayScreen play1;
     private Play2ndScreen play2;
     private LevelScreen levscr;
     private Animation animation;
     private TextureAtlas backAtlas;
-    private float elapsedTime  = 0;
+    private float elapsedTime  = 0,clock;
     private int  sourceX = 0;
     Integer pos = 1;
     Sound sound,bs,es;
-
+    boolean key = false;
 
     public  MenuScreen(MyGdxGame game)
     {
@@ -44,6 +44,7 @@ public class MenuScreen implements Screen {
         sound.loop();
 
         background = new Texture("Menu//Background.png");
+        tex1 = new Texture("Menu//back2.png");
         button = new Sprite(new Texture("Menu//s1.png"));
         backAtlas = new TextureAtlas(Gdx.files.internal("Menu//Vector.atlas"));
         animation = new Animation(1f/3f,backAtlas.getRegions());
@@ -69,14 +70,32 @@ public class MenuScreen implements Screen {
         batch.begin();
         batch.draw(background,0,0);
         batch.draw((TextureRegion) animation.getKeyFrame(elapsedTime, true),400,260);
+        if(pos == 3)
+        {
+            clock += Gdx.graphics.getDeltaTime();
+            if(key == true)
+            {
+                if(clock < 2.5)
+                {
+                    batch.draw(tex1,0,0);
+                    button.setPosition(0,-100);
+                }
+                else
+                {
+                    key = false;
+                    clock = 0;
+                    button.setPosition(255,115);
+                }
+            }
 
+        }
         button.draw(batch);
         batch.end();
 
     }
     private void handleInput()
     {
-        if(Gdx.input.isKeyPressed(Input.Keys.ENTER))
+        if(Gdx.input.isKeyJustPressed(Input.Keys.ENTER))
         {
             es.play(2.0f);
             if(pos == 1)
@@ -93,7 +112,7 @@ public class MenuScreen implements Screen {
             }
             if(pos == 3)
             {
-                //tutorial
+                key = true;
             }
             if(pos == 4)
             {
