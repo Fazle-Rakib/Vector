@@ -23,7 +23,7 @@ public class Play2ndScreen implements Screen {
     private Sprite objCut1,objCut2,objCut3,objSpkie1,objSpkie2,objSpkie3
             ,objSpkie4,objBarrol,objStone1,objStone2,objPad1,objPad2,objPad3
             ,objBlock1,objBlock2;
-    private  Sprite collision_test,objisheat,winTex;
+    private  Sprite collision_test,objisheat,winTex,liv[];
     private Rectangle objCut1_rec;
     private Rectangle objCut2_rec;
     private Rectangle objCut3_rec;
@@ -47,7 +47,7 @@ public class Play2ndScreen implements Screen {
 
     private OrthographicCamera camera;
     private Viewport viewport;
-    private int  sourceX = 0;
+    private int  sourceX = 0,life = 4;
     float cx,cy;
     private int player_x = 50,player_y = 25,incre = 0;
     Integer PlayerFreame = 0;
@@ -78,6 +78,12 @@ public class Play2ndScreen implements Screen {
         ex1Tex = new Texture("Bright2//umbrella.png");
         roadTex = new Texture("Bright2//road.png");
         winTex = new Sprite(new Texture("Menu//Lev.png"));
+
+        liv = new Sprite[5];
+        liv[1] = new Sprite(new Texture("Menu//U1.png"));
+        liv[2] = new Sprite(new Texture("Menu//U.png"));
+        liv[3] = new Sprite(new Texture("Menu//U2.png"));
+        liv[4] = new Sprite(new Texture("Menu//U2.png"));
 
         //Texture wrapping/looping
         skyTex.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
@@ -167,6 +173,9 @@ public class Play2ndScreen implements Screen {
         game.batch.draw(ex1Tex,0,0,(int)(sourceX*2.3),0,850,500);
         game.batch.draw(roadTex,0,0,(int)(sourceX*2.8),0,850,500);
 
+        liv[life].setPosition(600,400);
+        liv[life].draw(game.batch);
+
         //**//pseudo player rec setposition
         collision_test.setPosition((float) player_rec_x,player_rec_y);
         //collision_test.draw(game.batch);
@@ -253,6 +262,11 @@ public class Play2ndScreen implements Screen {
         }
         if(isheat) {
             sHit.play();
+            life--;
+            if(life == 0)
+            {
+                Death = true;
+            }
             objisheat.draw(game.batch);
         }
         else{

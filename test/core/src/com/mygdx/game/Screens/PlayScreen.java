@@ -22,7 +22,7 @@ public class PlayScreen implements Screen{
                         ,objStone1,objStone2,objspike01,objPad04,objPad03
                         ,objcutter,objBarrol2;
     private Sprite    objisheat;
-    private Sprite test1,test2,animation_test,winTex;
+    private Sprite test1,test2,animation_test,winTex,liv[];
     private Rectangle rec1,rec2,Player_anime_test_rec,objBarrol_rec,objTire_rec
                          ,objBlock2_rec,objPad1_rec,objPad2_rec,
                         objStone1_rec,objStone2_rec,objspike01_rec,objPad04_rec
@@ -35,7 +35,7 @@ public class PlayScreen implements Screen{
     private Viewport viewport;
     int  sourceX = 0;
     float cx,cy;
-    int player_x = 50,player_y = 25,incre = 0;
+    int player_x = 50,player_y = 25,incre = 0,life = 4;
     Integer PlayerFreame = 0;
     boolean isover[]=new boolean[20];
     boolean isvanish[]=new boolean[20];
@@ -63,7 +63,11 @@ public class PlayScreen implements Screen{
         exTex = new Texture("Bright//ex1.png");
         roadTex = new Texture("Bright//road&lamps.png");
         winTex = new Sprite(new Texture("Menu//Lev.png"));
-
+        liv = new Sprite[5];
+        liv[1] = new Sprite(new Texture("Menu//U1.png"));
+        liv[2] = new Sprite(new Texture("Menu//U.png"));
+        liv[3] = new Sprite(new Texture("Menu//U2.png"));
+        liv[4] = new Sprite(new Texture("Menu//U2.png"));
         //**//Sprite Declaration
         objBarrol = new Sprite(new Texture("Object//Barrel_1.png"));
         objBarrol2 = new Sprite(new Texture("Object//Barrel_2.png"));
@@ -180,6 +184,9 @@ public class PlayScreen implements Screen{
         game.batch.draw(exTex,0,0,sourceX*2,0,850,500);
         game.batch.draw(roadTex,0,0,(int)(sourceX*3.5),0,850,500);
 
+        liv[life].setPosition(600,400);
+        liv[life].draw(game.batch);
+
         //**//enenmy draww
 
         //game.batch.draw((TextureRegion) AnimE_1_A.getKeyFrame(elapsedTime,true ),0,25);
@@ -253,6 +260,11 @@ public class PlayScreen implements Screen{
         }
         if(isheat) {
 			sHit.play();
+			life--;
+			if(life == 0)
+            {
+                Death = true;
+            }
             objisheat.draw(game.batch);
         }
         else{
@@ -278,7 +290,7 @@ public class PlayScreen implements Screen{
                         {
                             player_rec_y=150;
                         }
-                        else if(clock>=101 && clock<=130)
+                        else if(clock>=101 && clock< 130)
                         {
                             player_rec_y=160;
                         }
@@ -286,7 +298,7 @@ public class PlayScreen implements Screen{
                         {
                             player_rec_y=25;
                         }
-                        if(clock>=80 && clock<=130)
+                        if(clock>=80 && clock< 130)
                         {
                             player_rec_x=140;
                         }
