@@ -140,7 +140,7 @@ public class Play2ndScreen implements Screen {
         if(Death)
         {
             sBack.pause();
-            deathScreen = new deathHandle(game,1);
+            deathScreen = new deathHandle(game,2);
             game.setScreen(deathScreen);
         }
         if(Win)
@@ -163,9 +163,9 @@ public class Play2ndScreen implements Screen {
         game.batch.draw(h3Tex,0,0,(int)(sourceX*1.5),0,850,500);
         game.batch.draw(h2Tex,0,0,(int)(sourceX*1.7),0,850,500);
         game.batch.draw(h1Tex,0,0,sourceX*2,0,850,500);
-        game.batch.draw(ex2Tex,0,0,sourceX*2,0,850,500);
-        game.batch.draw(ex1Tex,0,0,sourceX*2,0,850,500);
-        game.batch.draw(roadTex,0,0,(int)(sourceX*2.2),0,850,500);
+        game.batch.draw(ex2Tex,0,0,(int)(sourceX*2.3),0,850,500);
+        game.batch.draw(ex1Tex,0,0,(int)(sourceX*2.3),0,850,500);
+        game.batch.draw(roadTex,0,0,(int)(sourceX*2.8),0,850,500);
 
         //**//pseudo player rec setposition
         collision_test.setPosition((float) player_rec_x,player_rec_y);

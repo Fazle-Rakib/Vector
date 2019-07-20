@@ -133,23 +133,7 @@ public class PlayScreen implements Screen{
     public void render(float delta) {
         handleInput();
         game.batch.begin();
-        if(Death)
-        {
-            sBack.pause();
-            //clock += Gdx.graphics.getDeltaTime();
-            while(alive)
-            {
-                clock+=Gdx.graphics.getDeltaTime();
-                game.batch.draw((TextureRegion) Player_1_J.getKeyFrame(elapsedTime,true ),player_x,player_y);
-                if(clock >130)
-                {
-                    alive = false;
-                    deathScreen = new deathHandle(game,1);
-                    game.setScreen(deathScreen);
-                }
-            }
 
-        }
         if(Win)
         {
             //handleWin();
@@ -194,7 +178,7 @@ public class PlayScreen implements Screen{
         game.batch.draw(backTex,0,0,(int)(sourceX*1.5),0,850,500);
         game.batch.draw(h1Tex,0,0,sourceX*2,0,850,500);
         game.batch.draw(exTex,0,0,sourceX*2,0,850,500);
-        game.batch.draw(roadTex,0,0,(int)(sourceX*3),0,850,500);
+        game.batch.draw(roadTex,0,0,(int)(sourceX*3.5),0,850,500);
 
         //**//enenmy draww
 
@@ -248,7 +232,7 @@ public class PlayScreen implements Screen{
             }
             isstop=false;
         }
-        for(int i=11;i<20;i++)
+        for(int i=11;i<14;i++)
         {
             if(isover[i])
             {
@@ -258,6 +242,7 @@ public class PlayScreen implements Screen{
 				break;
             }
         }
+
         for(int i=0;i<20;i++)
         {
             if(isvanish[i])
@@ -280,13 +265,17 @@ public class PlayScreen implements Screen{
             if(PlayerFreame == 1)
             {
                 clock += Gdx.graphics.getDeltaTime()*100;
-                if(!isstop)
+                if(!isstop && !Death)
                 {
                         game.batch.draw((TextureRegion) Player_1_J.getKeyFrame(clock,true ),(int)(player_x+incre*1.2),player_y);
 
                         //**//pseudo player animation
 
-                        if(clock>=20 && clock<=100){
+                        if(clock>=20 && clock<=35){
+                            player_rec_y= 50;
+                        }
+                        else if(clock >=36 && clock <= 100)
+                        {
                             player_rec_y=150;
                         }
                         else if(clock>=101 && clock<=130)
@@ -315,6 +304,29 @@ public class PlayScreen implements Screen{
                     player_rec_y = 25;
                 }
             }
+        }
+        if(Death)
+        {
+            sBack.pause();
+            //clock += Gdx.graphics.getDeltaTime();
+            while(PlayerFreame == 1)
+            {
+                clock+=Gdx.graphics.getDeltaTime();
+                //game.batch.draw((TextureRegion) Player_1_J.getKeyFrame(elapsedTime,true ),player_x,player_y);
+                if(clock < 130)
+                {
+                    objisheat.setPosition((float) player_rec_x,(float) (player_rec_y-0.05*clock));
+                }
+                objisheat.draw(game.batch);
+                if(clock >= 130)
+                {
+                    PlayerFreame = 0;
+                    clock = 0;
+                }
+            }
+            sHit.play();
+            deathScreen = new deathHandle(game,1);
+            game.setScreen(deathScreen);
         }
 /****/		
         if(PlayerFreame == 2)
