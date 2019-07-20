@@ -1,0 +1,75 @@
+
+Player_R.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Run_
+  rotate: false
+  xy: 1, 1
+  size: 100, 125
+  orig: 100, 125
+  offset: 0, 0
+  index: 0
+Run_
+  rotate: false
+  xy: 103, 1
+  size: 100, 125
+  orig: 100, 125
+  offset: 0, 0
+  index: 1
+Run_
+  rotate: false
+  xy: 205, 1
+  size: 100, 125
+  orig: 100, 125
+  offset: 0, 0
+  index: 2
+Run_
+  rotate: false
+  xy: 307, 1
+  size: 100, 125
+  orig: 100, 125
+  offset: 0, 0
+  index: 3
+Run_
+  rotate: false
+  xy: 409, 1
+  size: 100, 125
+  orig: 100, 125
+  offset: 0, 0
+  index: 4
+Run_
+  rotate: false
+  xy: 511, 1
+  size: 100, 125
+  orig: 100, 125
+  offset: 0, 0
+  index: 5
+Run_
+  rotate: false
+  xy: 613, 1
+  size: 100, 125
+  orig: 100, 125
+  offset: 0, 0
+  index: 6
+Run_
+  rotate: false
+  xy: 715, 1
+  size: 100, 125
+  orig: 100, 125
+  offset: 0, 0
+  index: 7
+Run_
+  rotate: false
+  xy: 817, 1
+  size: 100, 125
+  orig: 100, 125
+  offset: 0, 0
+  index: 8
+Run_
+  rotate: false
+  xy: 919, 1
+  size: 100, 125
+  orig: 100, 125
+  offset: 0, 0
+  index: 9
